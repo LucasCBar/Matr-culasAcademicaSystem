@@ -1,0 +1,27 @@
+@startuml SistemaMatrícula
+
+actor "Aluno" as aluno
+actor "Professor" as professor
+actor "Secretaria" as secretaria
+
+usecase "Fazer Matrícula" as FazerMatricula
+usecase "Cancelar Matrícula" as CancelarMatricula
+usecase "Verificar status da disciplina" as VerificarStatus
+usecase "Notificar sistema de cobrança" as NotificarCobranca
+usecase "Verificar alunos matriculados" as VerificarAlunos
+usecase "Gerar Currículo" as GerarCurriculo
+usecase "Gerenciar dados de disciplina, alunos e professores" as GerenciarDados
+usecase "Definir período de matrícula" as DefinirPeriodo
+
+aluno -- FazerMatricula
+aluno -- CancelarMatricula
+professor -- VerificarAlunos
+secretaria -- GerarCurriculo
+secretaria -- GerenciarDados
+secretaria -- DefinirPeriodo
+secretaria -- VerificarStatus
+
+FazerMatricula -down-> VerificarStatus : <<include>>
+FazerMatricula -down-> NotificarCobranca : <<include>>
+CancelarMatricula -down-> NotificarCobranca : <<include>>
+@enduml
