@@ -1,0 +1,69 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+!define RECTANGLE class
+
+RECTANGLE Usuario {
+  - email: String
+  - senha: String
+  + realizarLogin(): void
+}
+
+RECTANGLE Secretaria {
+  - local: String
+  - id: int
+  - alunos: List<Aluno>
+  - professores: List<Professor>
+  - diciplinas: List<Diciplina>
+
+  + cadastrarAluno(): void
+  + cadastrarProfessor(): void
+  + cadastrarDiciplinas(): void
+  + definirPrazoMatricula(): void
+  + gerarCurriculo(): String
+}
+
+RECTANGLE Aluno {
+  - nome: String
+  - matricula: String
+  - diciplinas: List<Diciplina>
+
+  + cadastrarDiciplina(Diciplina, Data): void
+  + removerCadastroDiciplina(Diciplina, Data): void
+  + validarCadastroDiciplina(List<Diciplina>): Boolean
+  + pagarSemestre(List<Diciplina>): Boolean
+}
+
+RECTANGLE Professor {
+  - matricula: String
+  - diciplinas: List<Diciplina>
+
+  + listarAlunosDisciplina(Diciplina): List<Aluno>
+}
+
+RECTANGLE Diciplina {
+  - nome: String
+  - codigo: String
+  - status: Boolean
+  - tipo: int = 1 // 1 = "obrigatórias", 2 = "optativas"
+  - alunos: List<Aluno>
+  - professor: Professor
+  - capacidadeMaxima: int = 60
+  - capacidadeMinima: int = 3
+  - periodoMatricula: Data
+  - custo: Double
+
+  + validarDiciplina(): Boolean
+}
+
+Secretaria "1" -down-> "0..*" Usuario
+Secretaria "1" -down-> "0..*" Diciplina
+
+Usuario "0..*" -down-> "1" Aluno
+Usuario "0..*" -down-> "1" Professor
+
+Aluno "3..60*" -down-> "0..*" Diciplina
+Diciplina "0..*" -down-> "1" Professor
+Professor "1" -down-> "0..*" Diciplina
+
+@enduml
