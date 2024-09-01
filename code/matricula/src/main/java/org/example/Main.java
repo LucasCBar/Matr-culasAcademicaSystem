@@ -170,7 +170,6 @@ public class Main {
 
     private static void validarDisciplinas(Secretaria secretaria) {
         for (Disciplina disciplina : secretaria.getDiciplinas()) {
-            // Usando o método de Disciplina para validar se a disciplina será oferecida
             Boolean isValid = disciplina.validarDisciplina();
             if (isValid != null && isValid) {
                 System.out.println("Disciplina " + disciplina.getNome() + " validada para o próximo semestre.");
