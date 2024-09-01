@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Secretaria {
+public class Secretaria extends Usuario {
     private String local;
     private int id;
     private List<Aluno> alunos;
     private List<Professor> professores;
     private List<Disciplina> diciplinas;
 
-    public Secretaria(String local, int id) {
+    public Secretaria(String email, String senha, String local, int id) {
+        super(email, senha);
         this.local = local;
         this.id = id;
         this.alunos = new ArrayList<>();
@@ -77,5 +78,9 @@ public class Secretaria {
     public String gerarCurriculo() {
         return "";
     }
-}
 
+    @Override
+    public boolean realizarLogin(String email, String senha) {
+        return this.getEmail().equals(email) && this.getSenha().equals(senha);
+    }
+}
