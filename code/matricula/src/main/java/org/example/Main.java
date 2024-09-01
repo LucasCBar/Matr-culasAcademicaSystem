@@ -1,5 +1,7 @@
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +10,7 @@ public class Main {
 
         secretaria.cadastrarAluno(new Aluno("aluno@teste.com", "senhaAluno", "Aluno Teste", "12345", new ArrayList<>()));
         secretaria.cadastrarProfessor(new Professor("professor@teste.com", "senhaProfessor", "67890", new ArrayList<>()));
-        secretaria.cadastrarDisciplina(new Disciplina("Matemática", "MAT101", true, 150.0));
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -108,11 +110,7 @@ public class Main {
                 .findFirst()
                 .orElse(null);
 
-        if (professor != null) {
-            return professor;
-        }
-
-        return null;
+        return professor;
     }
 
     private static void mostrarMenuSecretaria() {
@@ -175,10 +173,17 @@ public class Main {
         Double custo = scanner.nextDouble();
         scanner.nextLine();
 
-        Disciplina disciplina = new Disciplina(nome, codigo, true, custo);
+        Boolean status = true;
+        int tipo = 1;
+        List<Aluno> alunos = new ArrayList<>();
+        Professor professor = null;
+        Date periodoMatricula = null;
+
+        Disciplina disciplina = new Disciplina(nome, codigo, status, tipo, alunos, professor, periodoMatricula, custo);
         secretaria.cadastrarDisciplina(disciplina);
         System.out.println("Disciplina cadastrada com sucesso!");
     }
+
 
     private static void matricularAlunoEmDisciplina(Secretaria secretaria, Scanner scanner) {
         System.out.print("Digite o email do aluno: ");
