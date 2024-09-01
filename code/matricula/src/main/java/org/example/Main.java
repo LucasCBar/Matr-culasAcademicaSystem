@@ -21,7 +21,7 @@ public class Main {
             System.out.println("7. Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -88,9 +88,9 @@ public class Main {
         String codigo = scanner.nextLine();
         System.out.print("Digite o custo da disciplina: ");
         Double custo = scanner.nextDouble();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
-        // Para simplificação, o professor da disciplina será o primeiro da lista
+
         Professor professor = secretaria.getProfessores().isEmpty() ? null : secretaria.getProfessores().get(0);
         Disciplina disciplina = new Disciplina(nome, codigo, true, 1, new ArrayList<>(), professor, new Date(), custo);
         secretaria.cadastrarDisciplina(disciplina);
@@ -127,7 +127,6 @@ public class Main {
             return;
         }
 
-        // Usando o método existente de Aluno para cadastrar em uma disciplina
         aluno.cadastrarDisciplina(disciplina, new Date());
         System.out.println("Aluno matriculado com sucesso na disciplina " + disciplina.getNome());
     }
@@ -150,7 +149,7 @@ public class Main {
             return;
         }
 
-        // Usando o método de Professor para listar alunos de uma disciplina
+
         Professor professor = disciplina.getProfessor();
         if (professor == null) {
             System.out.println("Nenhum professor atribuído a esta disciplina.");
