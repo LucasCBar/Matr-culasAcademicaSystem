@@ -4,7 +4,7 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 ## Integrantes
 * Lucas de Carvalho Barbosa
 * Rodrigo Diniz Carvalho
-* Nome completo do aluno 3
+* Gabriel Augusto Souza Borges
 
 ## Orientadores
 * Cristiano De Macêdo Neto
