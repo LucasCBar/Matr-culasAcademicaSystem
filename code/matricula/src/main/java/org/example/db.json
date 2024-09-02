@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "email": "aluno1@universidade.com",
+      "senha": "senha123"
+    },
+    {
+      "email": "aluno2@universidade.com",
+      "senha": "senha456"
+    },
+    {
+      "email": "aluno23@universidade.com",
+      "senha": "senha456"
+    },
+    {
+      "email": "aluno4@universidade.com",
+      "senha": "senha456"
+    },
+    {
+      "email": "aluno5@universidade.com",
+      "senha": "senha456"
+    },
+    {
+      "email": "professor1@universidade.com",
+      "senha": "senha456"
+    },
+    {
+      "email": "professor2@universidade.com",
+      "senha": "senha456"
+    }
+  ]
+}
