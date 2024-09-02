@@ -15,7 +15,8 @@ public class Disciplina {
     private Date periodoMatricula;
     private Double custo;
 
-    public Disciplina(String nome, String codigo, Boolean status, int tipo, List<Aluno> alunos, Professor professor, Date periodoMatricula, Double custo) {
+    public Disciplina(String nome, String codigo, Boolean status, int tipo, List<Aluno> alunos, Professor professor,
+            Date periodoMatricula, Double custo) {
         this.nome = nome;
         this.codigo = codigo;
         this.status = status;
@@ -107,7 +108,28 @@ public class Disciplina {
     }
 
     public Boolean validarDisciplina() {
-        return null; // Implementar validação de disciplina
+        Date dataAtual = new Date();
+
+        if (dataAtual.after(this.periodoMatricula)) {
+            this.status = false;
+
+            if (this.alunos.size() >= this.capacidadeMinima) {
+
+                this.professor = null;
+
+                for (int i = 0; i < this.alunos.size(); i++) {
+                    this.alunos.get(i).removerCadastroDisciplina(this, dataAtual);
+                }
+            }
+            return false;
+        }
+
+        if (this.alunos.size() >= this.capacidadeMaxima) {
+            this.status = false;
+            return false;
+        }
+
+        this.status = true;
+        return true;
     }
 }
-
