@@ -41,9 +41,6 @@ public class Usuario {
                 String emailCsv = dados[0];
                 String senhaCsv = dados[1];
 
-                System.out.println(emailCsv);
-                System.out.println(email);
-
                 if (email.equals(emailCsv) && senha.equals(senhaCsv)) {
                     return true;
                 }
